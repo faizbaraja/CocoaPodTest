@@ -7,8 +7,14 @@
 
 import UIKit
 
-class ServiceManager: NSObject {
+public class ServiceManager {
+    public init(){}
+    
     public func printLog() {
         print("this is baraja framework")
+    }
+    
+    public func getTestVC() -> TestViewController {
+        return TestViewController(nibName: "TestViewController", bundle: Bundle(for: type(of: self)))
     }
 }

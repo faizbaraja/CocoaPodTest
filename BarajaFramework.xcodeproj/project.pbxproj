@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		F4885ABB25DB9A38007E7D93 /* BarajaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4885AB125DB9A38007E7D93 /* BarajaFramework.framework */; };
-		F4885AC025DB9A38007E7D93 /* BarajaFrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4885ABF25DB9A38007E7D93 /* BarajaFrameworkTests.swift */; };
 		F4885AC225DB9A38007E7D93 /* BarajaFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = F4885AB425DB9A38007E7D93 /* BarajaFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F4885AE425DB9D24007E7D93 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4885AE325DB9D24007E7D93 /* ServiceManager.swift */; };
+		F4885B5025DBAE4D007E7D93 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4885B4E25DBAE4D007E7D93 /* TestViewController.swift */; };
+		F4885B5125DBAE4D007E7D93 /* TestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4885B4F25DBAE4D007E7D93 /* TestViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,8 @@
 		F4885ABF25DB9A38007E7D93 /* BarajaFrameworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarajaFrameworkTests.swift; sourceTree = "<group>"; };
 		F4885AC125DB9A38007E7D93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4885AE325DB9D24007E7D93 /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
+		F4885B4E25DBAE4D007E7D93 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		F4885B4F25DBAE4D007E7D93 /* TestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +79,8 @@
 				F4885AB425DB9A38007E7D93 /* BarajaFramework.h */,
 				F4885AB525DB9A38007E7D93 /* Info.plist */,
 				F4885AE325DB9D24007E7D93 /* ServiceManager.swift */,
+				F4885B4E25DBAE4D007E7D93 /* TestViewController.swift */,
+				F4885B4F25DBAE4D007E7D93 /* TestViewController.xib */,
 			);
 			path = BarajaFramework;
 			sourceTree = "<group>";
@@ -181,6 +186,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4885B5125DBAE4D007E7D93 /* TestViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +204,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4885B5025DBAE4D007E7D93 /* TestViewController.swift in Sources */,
 				F4885AE425DB9D24007E7D93 /* ServiceManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -206,7 +213,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4885AC025DB9A38007E7D93 /* BarajaFrameworkTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +352,7 @@
 		F4885AC625DB9A38007E7D93 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -374,6 +381,7 @@
 		F4885AC725DB9A38007E7D93 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
