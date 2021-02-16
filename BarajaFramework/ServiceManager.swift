@@ -8,5 +8,7 @@
 import UIKit
 
 class ServiceManager: NSObject {
-
+    public func printLog() {
+        print("this is baraja framework")
+    }
 }
