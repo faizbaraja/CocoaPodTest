@@ -46,17 +46,6 @@
                  start();
              } else {
                  console.log("Warning – Widget is not loaded from the iOS app")
-                 window.announcekit.push({
-                     // Standard config
-                     widget: "https://announcekit.app/widgets/v2/4k0Uqk",
-                     selector: ".announcekit-widget",
-                     user: {
-                         id: "DEBUG_4"
-                     },
-                     data: {
-                         platform: "ios"
-                     }
-                 });                 
              }
              
              announcekit.on("init", function() {

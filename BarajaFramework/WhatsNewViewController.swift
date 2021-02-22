@@ -14,13 +14,11 @@ public protocol WhatsNewViewControllerProtocol {
 
 public class WhatsNewViewController: UIViewController {
 
-    let service: WhatsNewService
+    var service: WhatsNewService?
     
     var delegate:WhatsNewViewControllerProtocol?
     
-    public init(userId:String, widgetId:String, delegate:WhatsNewViewControllerProtocol?) {
-        self.service = WhatsNewService(userId: userId, widgetId: widgetId, unreadCountWidgetId: widgetId)
-        self.delegate = delegate
+    public init() {
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -30,13 +28,6 @@ public class WhatsNewViewController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.service.delegate = self
-        
-        let webView = service.webView
-        webView.frame = self.view.bounds
-        webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.addSubview(webView)
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -45,6 +36,28 @@ public class WhatsNewViewController: UIViewController {
     
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+    }
+    
+    public func postPageViewController(userId:String?, widgetId:String) -> WhatsNewViewController {
+        self.service = WhatsNewService(userId: userId, widgetId: widgetId, unreadCountWidgetId: widgetId)
+        self.service?.delegate = self
+        
+        guard let webView = service?.webView else { return self }
+        webView.frame = self.view.bounds
+        webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(webView)
+        return self
+    }
+    
+    public func getUnreadCount(userId:String?, widgetId:String, delegate:WhatsNewViewControllerProtocol?){
+        self.service = WhatsNewService(userId: userId, widgetId: widgetId, unreadCountWidgetId: widgetId)
+        self.delegate = delegate
+        self.service?.delegate = self
+        guard let _ = service?.webView else { return }
+    }
+    
+    deinit {
+        service = nil
     }
 }
 

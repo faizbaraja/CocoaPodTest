@@ -11,7 +11,7 @@ class WhatsNewService {
     private let messenger: WhatsNewServiceMessenger
     
     private let widgetId: String
-    private let userId: String
+    private let userId: String?
     private let unreadCountWidgetId: String
     
     var delegate:WhatsNewServiceProtocol?
@@ -21,7 +21,7 @@ class WhatsNewService {
     ///   - userId: the user id passed to AnnounceKit, used to keep the unread count
     ///   - widgetId: an "embed" widget that will be displayed
     ///   - unreadCountWidgetId: a "direct link" widget to get unread count before displaying
-    init (userId: String, widgetId: String, unreadCountWidgetId: String) {
+    init (userId: String?, widgetId: String, unreadCountWidgetId: String) {
         let messenger = WhatsNewServiceMessenger()
         let configuration = WKWebViewConfiguration()
         configuration.userContentController.add(messenger, name: messenger.updateUnreadCount)
@@ -33,7 +33,7 @@ class WhatsNewService {
         
         self.messenger = messenger
         self.widgetId = widgetId
-        self.userId = "DEBUG_00" + userId 
+        self.userId = "DEBUG_00" + (userId ?? "")
         self.unreadCountWidgetId = unreadCountWidgetId
         
         self.messenger.serviceDelegate = self
@@ -44,7 +44,7 @@ class WhatsNewService {
         
         let script =    """
                         function start() {
-                        \(Self.pushFunctionString(userId: userId, widgetId: widgetId, selector: ".announcekit-widget"))
+                        \(Self.pushFunctionString(userId: (userId ?? ""), widgetId: widgetId, selector: ".announcekit-widget"))
                         }
                         """
         let userScript = WKUserScript(source: script, injectionTime: .atDocumentStart, forMainFrameOnly: true)
