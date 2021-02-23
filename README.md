@@ -49,3 +49,6 @@ let postPageViewController = announceKit.postPageViewController(userId: nil, wid
 ```postPageViewController(userId: nil, widgetId: <#widget id#>)``` will return a UIViewController, so you can use it as modal, push or even as subview.
 <br/>Make sure to replace the ```widget id``` with your ```widget id```
 userId is optional data. <br/>It used to track the user data. 
+
+## More
+You can also check out our [documentation](https://announcekit.app/docs) for more detailed information about our SDK.
