@@ -47,4 +47,5 @@ extension <#Your ViewController Name#> : WhatsNewViewControllerProtocol {
 let postPageViewController = announceKit.postPageViewController(userId: nil, widgetId: <#widget id#>)
 ```
 ```postPageViewController(userId: nil, widgetId: <#widget id#>)``` will return a UIViewController, so you can use it as modal, push or even as subview.
-<br/>Don't forget to set the delegate for receive the callback
+<br/>Make sure to replace the ```widget id``` with your ```widget id```
+userId is optional data. <br/>It used to track the user data. 
