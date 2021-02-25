@@ -12,7 +12,7 @@ class AnnounceKitService {
     
     private let widgetId: String
     private let selector: String = ".announcekit-widget"
-    private var additionalParameter:[String] = []
+    private var additionalParameter:[String:String] = [:]
     
     var delegate:AnnounceKitServiceProtocol?
     
@@ -64,7 +64,7 @@ class AnnounceKitService {
                     data: {
                         platform: "ios"
                     },
-                    \(additionalParameter.joined(separator: ","))
+                    \(additionalParameter.values.joined(separator: ","))
                 });
             """
     }
@@ -73,8 +73,7 @@ class AnnounceKitService {
         let parameter = """
                         lang: "\(lang)"
                         """
-        additionalParameter.removeAll{ $0.contains("lang:")}
-        additionalParameter.append(parameter)
+        additionalParameter["lang"] = parameter
     }
     
     func runScript() {
