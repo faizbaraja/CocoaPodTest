@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "BarajaFramework"
-  spec.version      = "0.7"
+  spec.version      = "0.8"
   spec.summary      = "This is a test cocoapod framework"
 
   spec.description  = "this is a test cocoapod framework"
@@ -23,7 +23,7 @@ Pod::Spec.new do |spec|
   # spec.tvos.deployment_target = "9.0"
 
 
-  spec.source       = { :git => "https://github.com/faizbaraja/CocoaPodTest.git", :tag => "0.7" }
+  spec.source       = { :git => "https://github.com/faizbaraja/CocoaPodTest.git", :tag => "0.8" }
 
 
   spec.source_files  = "BarajaFramework/**/*"
