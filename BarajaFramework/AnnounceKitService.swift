@@ -2,26 +2,24 @@
 import Foundation
 import WebKit
 
-protocol WhatsNewServiceProtocol {
+protocol AnnounceKitServiceProtocol {
     func updateUnreadCount(unreadCount:Int)
 }
 
-class WhatsNewService {    
+class AnnounceKitService {
     let webView: WKWebView
     private let messenger: WhatsNewServiceMessenger
     
     private let widgetId: String
-    private let userId: String?
-    private let unreadCountWidgetId: String
+    private let selector: String = ".announcekit-widget"
+    private var additionalParameter:[String] = []
     
-    var delegate:WhatsNewServiceProtocol?
+    var delegate:AnnounceKitServiceProtocol?
     
-    /// Instanciate, Configure the service, and start loading the What's new
-    /// - Parameters:
-    ///   - userId: the user id passed to AnnounceKit, used to keep the unread count
-    ///   - widgetId: an "embed" widget that will be displayed
-    ///   - unreadCountWidgetId: a "direct link" widget to get unread count before displaying
-    init (userId: String?, widgetId: String, unreadCountWidgetId: String) {
+    
+    /// Instantiate the AnnounceKitService
+    /// - Parameter widgetId: the widget id that that will be displayed
+    init (widgetId: String) {
         let messenger = WhatsNewServiceMessenger()
         let configuration = WKWebViewConfiguration()
         configuration.userContentController.add(messenger, name: messenger.updateUnreadCount)
@@ -33,8 +31,7 @@ class WhatsNewService {
         
         self.messenger = messenger
         self.widgetId = widgetId
-        self.userId = "DEBUG_00" + (userId ?? "")
-        self.unreadCountWidgetId = unreadCountWidgetId
+        
         
         self.messenger.serviceDelegate = self
         self.configure()
@@ -44,33 +41,49 @@ class WhatsNewService {
         
         let script =    """
                         function start() {
-                        \(Self.pushFunctionString(userId: (userId ?? ""), widgetId: widgetId, selector: ".announcekit-widget"))
+                        \(self.pushFunctionString())
                         }
                         """
         let userScript = WKUserScript(source: script, injectionTime: .atDocumentStart, forMainFrameOnly: true)
         webView.configuration.userContentController.addUserScript(userScript)
-        
+    }
+    
+    public func loadPage() {
         let bundle = Bundle(for: type(of: self))
         if let url = bundle.url(forResource: "whatsNewService", withExtension: "html") {
             self.webView.load(URLRequest(url: url))
         }
     }
     
-    static private func pushFunctionString(userId: String, widgetId: String, selector: String) -> String {
+    private func pushFunctionString() -> String {
         return """
-                            announcekit.push({
-                                // Standard config
-                                widget: "https://announcekit.app/widgets/v2/\(widgetId)",
-                                selector: "\(selector)",
-                                user: {
-                                    id: "\(userId)"
-                                },
-                                data: {
-                                    platform: "ios",
-                                    version: "14.0"
-                                }
-                            });
+                announcekit.push({
+                    // Standard config
+                    widget: "https://announcekit.app/widgets/v2/\(self.widgetId)",
+                    selector: "\(self.selector)",
+                    data: {
+                        platform: "ios"
+                    },
+                    \(additionalParameter.joined(separator: ","))
+                });
             """
+    }
+    
+    func setLang(lang:String) {
+        let parameter = """
+                        lang: "\(lang)"
+                        """
+        additionalParameter.removeAll{ $0.contains("lang:")}
+        additionalParameter.append(parameter)
+    }
+    
+    func runScript() {
+        let script = pushFunctionString()
+        webView.evaluateJavaScript(script) { (result, error) in
+            if error != nil {
+                print(result ?? Error.self)
+            }
+        }
     }
     
     fileprivate func updateUnreadCount(unreadCount:Int?) {
@@ -85,7 +98,7 @@ fileprivate class WhatsNewServiceMessenger: NSObject, WKScriptMessageHandler {
     let logHandler = "logHandler"
     let errorHandler = "errorHandler"
     
-    weak var serviceDelegate: WhatsNewService?
+    weak var serviceDelegate: AnnounceKitService?
     
     override init() {
         super.init()
@@ -98,7 +111,7 @@ fileprivate class WhatsNewServiceMessenger: NSObject, WKScriptMessageHandler {
                   let unread = dict["unread"] as? Int? else {
                 return
             }
-            serviceDelegate?.updateUnreadCount(unreadCount: unread)//unreadCount.update(unread)
+            serviceDelegate?.updateUnreadCount(unreadCount: unread)
         case logHandler:
             print("\(message.body)")
         case errorHandler:

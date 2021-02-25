@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A9A7F8C825DE9F04001778B0 /* WhatsNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A7F8C625DE9F04001778B0 /* WhatsNewViewController.swift */; };
-		A9A7F8C925DE9F04001778B0 /* WhatsNewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A7F8C525DE9F04001778B0 /* WhatsNewService.swift */; };
-		A9A7F8CC25DE9F0F001778B0 /* whatsNewService.html in Resources */ = {isa = PBXBuildFile; fileRef = A9A7F8C725DE9F04001778B0 /* whatsNewService.html */; };
+		A90FD09F25E7CAF500225552 /* AnnounceKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90FD09C25E7CAF400225552 /* AnnounceKit.swift */; };
+		A90FD0A125E7CAF500225552 /* AnnounceKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90FD09E25E7CAF400225552 /* AnnounceKitService.swift */; };
+		A90FD0B125E7CBC500225552 /* whatsNewService.html in Resources */ = {isa = PBXBuildFile; fileRef = A90FD0B025E7CBC500225552 /* whatsNewService.html */; };
 		F4885ABB25DB9A38007E7D93 /* BarajaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4885AB125DB9A38007E7D93 /* BarajaFramework.framework */; };
 		F4885AC225DB9A38007E7D93 /* BarajaFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = F4885AB425DB9A38007E7D93 /* BarajaFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -25,9 +25,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A9A7F8C525DE9F04001778B0 /* WhatsNewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewService.swift; sourceTree = "<group>"; };
-		A9A7F8C625DE9F04001778B0 /* WhatsNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewViewController.swift; sourceTree = "<group>"; };
-		A9A7F8C725DE9F04001778B0 /* whatsNewService.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = whatsNewService.html; sourceTree = "<group>"; };
+		A90FD09C25E7CAF400225552 /* AnnounceKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnounceKit.swift; sourceTree = "<group>"; };
+		A90FD09E25E7CAF400225552 /* AnnounceKitService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnounceKitService.swift; sourceTree = "<group>"; };
+		A90FD0B025E7CBC500225552 /* whatsNewService.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = whatsNewService.html; sourceTree = "<group>"; };
 		F4885AB125DB9A38007E7D93 /* BarajaFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BarajaFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4885AB425DB9A38007E7D93 /* BarajaFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BarajaFramework.h; sourceTree = "<group>"; };
 		F4885AB525DB9A38007E7D93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -77,9 +77,9 @@
 			isa = PBXGroup;
 			children = (
 				F4885AB425DB9A38007E7D93 /* BarajaFramework.h */,
-				A9A7F8C725DE9F04001778B0 /* whatsNewService.html */,
-				A9A7F8C525DE9F04001778B0 /* WhatsNewService.swift */,
-				A9A7F8C625DE9F04001778B0 /* WhatsNewViewController.swift */,
+				A90FD0B025E7CBC500225552 /* whatsNewService.html */,
+				A90FD09E25E7CAF400225552 /* AnnounceKitService.swift */,
+				A90FD09C25E7CAF400225552 /* AnnounceKit.swift */,
 				F4885AB525DB9A38007E7D93 /* Info.plist */,
 			);
 			path = BarajaFramework;
@@ -186,7 +186,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9A7F8CC25DE9F0F001778B0 /* whatsNewService.html in Resources */,
+				A90FD0B125E7CBC500225552 /* whatsNewService.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,8 +204,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9A7F8C925DE9F04001778B0 /* WhatsNewService.swift in Sources */,
-				A9A7F8C825DE9F04001778B0 /* WhatsNewViewController.swift in Sources */,
+				A90FD09F25E7CAF500225552 /* AnnounceKit.swift in Sources */,
+				A90FD0A125E7CAF500225552 /* AnnounceKitService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
