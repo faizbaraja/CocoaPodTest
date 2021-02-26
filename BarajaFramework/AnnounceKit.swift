@@ -36,8 +36,15 @@ public class AnnounceKit {
     }
     
     public func setLanguage(lang:String) {
-        self.service?.setLang(lang: lang)//language = lang
-        self.service?.runScript()
+        self.service?.setLang(lang: lang)
+    }
+    
+    public func setUser(id:String, email:String?, name:String?) {
+        self.service?.setUser(id:id, email:email, name:name)
+    }
+    
+    public func reloadWidget() {
+        self.service?.reloadWidget()
     }
     
     deinit {

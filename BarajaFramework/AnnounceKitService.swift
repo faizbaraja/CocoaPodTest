@@ -12,6 +12,7 @@ class AnnounceKitService {
     
     private let widgetId: String
     private let selector: String = ".announcekit-widget"
+    //private var additionalParameter:[String] = []
     private var additionalParameter:[String:String] = [:]
     
     var delegate:AnnounceKitServiceProtocol?
@@ -34,7 +35,7 @@ class AnnounceKitService {
         
         
         self.messenger.serviceDelegate = self
-        self.configure()
+//        self.configure()
     }
     
     private func configure() {
@@ -49,6 +50,8 @@ class AnnounceKitService {
     }
     
     public func loadPage() {
+        configure()
+        
         let bundle = Bundle(for: type(of: self))
         if let url = bundle.url(forResource: "whatsNewService", withExtension: "html") {
             self.webView.load(URLRequest(url: url))
@@ -76,7 +79,36 @@ class AnnounceKitService {
         additionalParameter["lang"] = parameter
     }
     
-    func runScript() {
+    func setUser(id:String, email:String?, name:String?) {
+        var userDictionary:[String:String] = [:]
+        userDictionary["id"] = """
+                                \(id)
+                                """
+        if let email = email {
+            userDictionary["email"] = """
+                                        \(email)
+                                        """
+        }
+
+        if let name = name {
+            userDictionary["name"] = """
+                                    \(name)
+                                    """
+        }
+
+        let userData = (userDictionary.compactMap({ (key, value) -> String in
+            return """
+                   \(key):"\(value)"
+                   """
+        }) as Array).joined(separator: ",")
+        
+        let parameter = """
+                        user: {\(userData)}
+                        """
+        additionalParameter["user"] = parameter
+    }
+    
+    func reloadWidget() {
         let script = pushFunctionString()
         webView.evaluateJavaScript(script) { (result, error) in
             if error != nil {
