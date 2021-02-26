@@ -19,21 +19,20 @@ import BarajaFramework
 ```
 2.  Create instance of the framework main class
 ```swift
-let announceKit = WhatsNewViewController()
+let announceKit = AnnounceKit(widgetId: <#widget id#>)
 ```
+make sure to replace the ```widget id``` with your ```widget id```
 
 ### Unread Count
 1.  To get the unread count of the posts, use this method
 ```swift
-announceKit.getUnreadCount(userId: nil, widgetId: <#widget id#>, delegate: self)
+announceKit.getUnreadCount(delegate: self)
 ```
-make sure to replace the ```widget id``` with your ```widget id```
-userId is optional data. <br/>It used to track the user data. 
-<br/>Don't forget to set the delegate for receive the callback
+Don't forget to set the delegate for receive the callback
 
 2.  To get the unread count of the posts, use this method
 ```swift
-extension <#Your ViewController Name#> : WhatsNewViewControllerProtocol {
+extension <#Your ViewController Name#> : AnnounceKitProtocol {
     func updateUnreadCount(unreadCount: Int) {
         //
     }
@@ -41,14 +40,20 @@ extension <#Your ViewController Name#> : WhatsNewViewControllerProtocol {
 ```
 ```func updateUnreadCount(unreadCount: Int)``` is a callback method when succeded getting the unread count and it returns with a number of unread post count
 
-### Post Page
+### Widget Page
 1.  To create a post page, tou can simply use this method
 ```swift
-let postPageViewController = announceKit.postPageViewController(userId: nil, widgetId: <#widget id#>)
+let postPageViewController = announceKit.createWidget()
 ```
-```postPageViewController(userId: nil, widgetId: <#widget id#>)``` will return a UIViewController, so you can use it as modal, push or even as subview.
-<br/>Make sure to replace the ```widget id``` with your ```widget id```
-userId is optional data. <br/>It used to track the user data. 
+```createWidget()``` will return a UIViewController, so you can use it as modal, push or even as subview.
+
+### Widget Language
+1.  To change the widget language, tou can simply use this method
+```swift
+announceKit.setLanguage(lang: <#language#>)
+```
+make sure to replace the ```language``` with your preferred language code. You can check your supported language in announcekit [dashboard language seeting](https://announcekit.app/dashboard/settings/languages)
+
 
 ## More
 You can also check out our [documentation](https://announcekit.app/docs) for more detailed information about our SDK.
