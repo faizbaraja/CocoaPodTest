@@ -52,7 +52,7 @@ let postPageViewController = announceKit.createWidget()
 ```swift
 announceKit.setLanguage(lang: <#language#>)
 ```
-make sure to replace the ```language``` with your preferred language code. You can check your supported language in announcekit [dashboard language seeting](https://announcekit.app/dashboard/settings)
+make sure to replace the ```language``` with your preferred language code. You can check your supported language in announcekit [dashboard language seeting](https://announcekit.app/dashboard/settings/languages)
 
 
 ## More
