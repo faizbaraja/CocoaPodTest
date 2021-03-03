@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "BarajaFramework"
-  spec.version      = "0.9"
+  spec.version      = "1.0.0"
   spec.summary      = "This is a test cocoapod framework"
 
   spec.description  = "this is a test cocoapod framework"
@@ -23,11 +23,11 @@ Pod::Spec.new do |spec|
   # spec.tvos.deployment_target = "9.0"
 
 
-  spec.source       = { :git => "https://github.com/faizbaraja/CocoaPodTest.git", :tag => "0.9" }
+  spec.source       = { :git => "https://github.com/faizbaraja/CocoaPodTest.git", :tag => "1.0.0" }
 
 
-  spec.source_files  = "BarajaFramework/**/*"
-  spec.exclude_files = "BarajaFramework/**/*.plist"
+  spec.source_files  = "Sources/BarajaFramework/**/*"
+  spec.exclude_files = "Sources/BarajaFramework/**/*.plist"
 
   # spec.public_header_files = "Classes/**/*.h"
 
@@ -40,7 +40,7 @@ Pod::Spec.new do |spec|
   #  non-essential files like tests, examples and documentation.
   #
 
-  spec.resource  = "BarajaFramework/whatsNewService.html"
+  spec.resource  = "Sources/BarajaFramework/whatsNewService.html"
   # spec.resources = "Resources/*.png"
 
   # spec.preserve_paths = "FilesToSave", "MoreFilesToSave"
