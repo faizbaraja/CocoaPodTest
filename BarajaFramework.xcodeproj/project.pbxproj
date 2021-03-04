@@ -10,13 +10,6 @@
 		A90FD09F25E7CAF500225552 /* AnnounceKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90FD09C25E7CAF400225552 /* AnnounceKit.swift */; };
 		A90FD0A125E7CAF500225552 /* AnnounceKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90FD09E25E7CAF400225552 /* AnnounceKitService.swift */; };
 		A90FD0B125E7CBC500225552 /* whatsNewService.html in Resources */ = {isa = PBXBuildFile; fileRef = A90FD0B025E7CBC500225552 /* whatsNewService.html */; };
-		A951F49B25EFC70F000E68F6 /* CocoaPodTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A951F49325EFC70F000E68F6 /* CocoaPodTest.swift */; };
-		A951F49C25EFC70F000E68F6 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A951F49425EFC70F000E68F6 /* README.md */; };
-		A951F49D25EFC70F000E68F6 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = A951F49525EFC70F000E68F6 /* Package.swift */; };
-		A951F49E25EFC70F000E68F6 /* LinuxMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = A951F49725EFC70F000E68F6 /* LinuxMain.swift */; };
-		A951F49F25EFC70F000E68F6 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A951F49925EFC70F000E68F6 /* XCTestManifests.swift */; };
-		A951F4A025EFC70F000E68F6 /* CocoaPodTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A951F49A25EFC70F000E68F6 /* CocoaPodTestTests.swift */; };
-		A951F4A425EFC75A000E68F6 /* BarajaFramework.podspec in Resources */ = {isa = PBXBuildFile; fileRef = A951F4A325EFC75A000E68F6 /* BarajaFramework.podspec */; };
 		F4885ABB25DB9A38007E7D93 /* BarajaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4885AB125DB9A38007E7D93 /* BarajaFramework.framework */; };
 		F4885AC225DB9A38007E7D93 /* BarajaFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = F4885AB425DB9A38007E7D93 /* BarajaFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -35,13 +28,6 @@
 		A90FD09C25E7CAF400225552 /* AnnounceKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnounceKit.swift; sourceTree = "<group>"; };
 		A90FD09E25E7CAF400225552 /* AnnounceKitService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnounceKitService.swift; sourceTree = "<group>"; };
 		A90FD0B025E7CBC500225552 /* whatsNewService.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = whatsNewService.html; sourceTree = "<group>"; };
-		A951F49325EFC70F000E68F6 /* CocoaPodTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaPodTest.swift; sourceTree = "<group>"; };
-		A951F49425EFC70F000E68F6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		A951F49525EFC70F000E68F6 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		A951F49725EFC70F000E68F6 /* LinuxMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinuxMain.swift; sourceTree = "<group>"; };
-		A951F49925EFC70F000E68F6 /* XCTestManifests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
-		A951F49A25EFC70F000E68F6 /* CocoaPodTestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaPodTestTests.swift; sourceTree = "<group>"; };
-		A951F4A325EFC75A000E68F6 /* BarajaFramework.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BarajaFramework.podspec; sourceTree = "<group>"; };
 		F4885AB125DB9A38007E7D93 /* BarajaFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BarajaFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4885AB425DB9A38007E7D93 /* BarajaFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BarajaFramework.h; sourceTree = "<group>"; };
 		F4885AB525DB9A38007E7D93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -69,49 +55,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A951F49125EFC70F000E68F6 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				F4885AB325DB9A38007E7D93 /* BarajaFramework */,
-				A951F49225EFC70F000E68F6 /* CocoaPodTest */,
-			);
-			path = Sources;
-			sourceTree = "<group>";
-		};
-		A951F49225EFC70F000E68F6 /* CocoaPodTest */ = {
-			isa = PBXGroup;
-			children = (
-				A951F49325EFC70F000E68F6 /* CocoaPodTest.swift */,
-			);
-			path = CocoaPodTest;
-			sourceTree = "<group>";
-		};
-		A951F49625EFC70F000E68F6 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				A951F49725EFC70F000E68F6 /* LinuxMain.swift */,
-				A951F49825EFC70F000E68F6 /* CocoaPodTestTests */,
-			);
-			path = Tests;
-			sourceTree = "<group>";
-		};
-		A951F49825EFC70F000E68F6 /* CocoaPodTestTests */ = {
-			isa = PBXGroup;
-			children = (
-				A951F49925EFC70F000E68F6 /* XCTestManifests.swift */,
-				A951F49A25EFC70F000E68F6 /* CocoaPodTestTests.swift */,
-			);
-			path = CocoaPodTestTests;
-			sourceTree = "<group>";
-		};
 		F4885AA725DB9A38007E7D93 = {
 			isa = PBXGroup;
 			children = (
-				A951F4A325EFC75A000E68F6 /* BarajaFramework.podspec */,
-				A951F49525EFC70F000E68F6 /* Package.swift */,
-				A951F49425EFC70F000E68F6 /* README.md */,
-				A951F49125EFC70F000E68F6 /* Sources */,
-				A951F49625EFC70F000E68F6 /* Tests */,
+				F4885AB325DB9A38007E7D93 /* BarajaFramework */,
 				F4885ABE25DB9A38007E7D93 /* BarajaFrameworkTests */,
 				F4885AB225DB9A38007E7D93 /* Products */,
 			);
@@ -239,8 +186,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A951F4A425EFC75A000E68F6 /* BarajaFramework.podspec in Resources */,
-				A951F49C25EFC70F000E68F6 /* README.md in Resources */,
 				A90FD0B125E7CBC500225552 /* whatsNewService.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,13 +204,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A951F49E25EFC70F000E68F6 /* LinuxMain.swift in Sources */,
-				A951F49D25EFC70F000E68F6 /* Package.swift in Sources */,
 				A90FD09F25E7CAF500225552 /* AnnounceKit.swift in Sources */,
-				A951F4A025EFC70F000E68F6 /* CocoaPodTestTests.swift in Sources */,
-				A951F49B25EFC70F000E68F6 /* CocoaPodTest.swift in Sources */,
 				A90FD0A125E7CAF500225552 /* AnnounceKitService.swift in Sources */,
-				A951F49F25EFC70F000E68F6 /* XCTestManifests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
