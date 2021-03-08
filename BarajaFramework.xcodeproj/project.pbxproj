@@ -10,6 +10,7 @@
 		A90FD09F25E7CAF500225552 /* AnnounceKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90FD09C25E7CAF400225552 /* AnnounceKit.swift */; };
 		A90FD0A125E7CAF500225552 /* AnnounceKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90FD09E25E7CAF400225552 /* AnnounceKitService.swift */; };
 		A90FD0B125E7CBC500225552 /* whatsNewService.html in Resources */ = {isa = PBXBuildFile; fileRef = A90FD0B025E7CBC500225552 /* whatsNewService.html */; };
+		A9F72C7F25F61FCA004465FB /* WidgetParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F72C7E25F61FCA004465FB /* WidgetParam.swift */; };
 		F4885ABB25DB9A38007E7D93 /* BarajaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4885AB125DB9A38007E7D93 /* BarajaFramework.framework */; };
 		F4885AC225DB9A38007E7D93 /* BarajaFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = F4885AB425DB9A38007E7D93 /* BarajaFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -28,6 +29,7 @@
 		A90FD09C25E7CAF400225552 /* AnnounceKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnounceKit.swift; sourceTree = "<group>"; };
 		A90FD09E25E7CAF400225552 /* AnnounceKitService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnounceKitService.swift; sourceTree = "<group>"; };
 		A90FD0B025E7CBC500225552 /* whatsNewService.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = whatsNewService.html; sourceTree = "<group>"; };
+		A9F72C7E25F61FCA004465FB /* WidgetParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetParam.swift; sourceTree = "<group>"; };
 		F4885AB125DB9A38007E7D93 /* BarajaFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BarajaFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4885AB425DB9A38007E7D93 /* BarajaFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BarajaFramework.h; sourceTree = "<group>"; };
 		F4885AB525DB9A38007E7D93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -55,6 +57,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A9F72C7D25F61FB7004465FB /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				A9F72C7E25F61FCA004465FB /* WidgetParam.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		F4885AA725DB9A38007E7D93 = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +86,7 @@
 		F4885AB325DB9A38007E7D93 /* BarajaFramework */ = {
 			isa = PBXGroup;
 			children = (
+				A9F72C7D25F61FB7004465FB /* Data */,
 				F4885AB425DB9A38007E7D93 /* BarajaFramework.h */,
 				A90FD0B025E7CBC500225552 /* whatsNewService.html */,
 				A90FD09E25E7CAF400225552 /* AnnounceKitService.swift */,
@@ -205,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A90FD09F25E7CAF500225552 /* AnnounceKit.swift in Sources */,
+				A9F72C7F25F61FCA004465FB /* WidgetParam.swift in Sources */,
 				A90FD0A125E7CAF500225552 /* AnnounceKitService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

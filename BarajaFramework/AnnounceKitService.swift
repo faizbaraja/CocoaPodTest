@@ -12,8 +12,7 @@ class AnnounceKitService {
     
     private let widgetId: String
     private let selector: String = ".announcekit-widget"
-    //private var additionalParameter:[String] = []
-    private var additionalParameter:[String:String] = [:]
+    private var widgetParameters:WidgetParameter = WidgetParameter()
     
     var delegate:AnnounceKitServiceProtocol?
     
@@ -35,11 +34,18 @@ class AnnounceKitService {
         
         
         self.messenger.serviceDelegate = self
-//        self.configure()
+    }
+    
+    private func setBasicParam() {
+        let additionalData = WidgetParameter.Data(platform: "ios")
+        
+        widgetParameters.widget = "https://announcekit.app/widgets/v2/\(self.widgetId)"
+        widgetParameters.selector = selector
+        widgetParameters.data = additionalData
     }
     
     private func configure() {
-        
+        setBasicParam()
         let script =    """
                         function start() {
                         \(self.pushFunctionString())
@@ -59,53 +65,20 @@ class AnnounceKitService {
     }
     
     private func pushFunctionString() -> String {
+        let jsonData = try! JSONEncoder().encode(widgetParameters)
+        let jsonString = String(data: jsonData, encoding: .utf8)!
         return """
-                announcekit.push({
-                    // Standard config
-                    widget: "https://announcekit.app/widgets/v2/\(self.widgetId)",
-                    selector: "\(self.selector)",
-                    data: {
-                        platform: "ios"
-                    },
-                    \(additionalParameter.values.joined(separator: ","))
-                });
+                announcekit.push(\(jsonString));
             """
     }
     
     func setLang(lang:String) {
-        let parameter = """
-                        lang: "\(lang)"
-                        """
-        additionalParameter["lang"] = parameter
+        widgetParameters.lang = lang
     }
     
     func setUser(id:String, email:String?, name:String?) {
-        var userDictionary:[String:String] = [:]
-        userDictionary["id"] = """
-                                \(id)
-                                """
-        if let email = email {
-            userDictionary["email"] = """
-                                        \(email)
-                                        """
-        }
-
-        if let name = name {
-            userDictionary["name"] = """
-                                    \(name)
-                                    """
-        }
-
-        let userData = (userDictionary.compactMap({ (key, value) -> String in
-            return """
-                   \(key):"\(value)"
-                   """
-        }) as Array).joined(separator: ",")
-        
-        let parameter = """
-                        user: {\(userData)}
-                        """
-        additionalParameter["user"] = parameter
+        let userParam = WidgetParameter.User(id: id, name: name, email: email)
+        widgetParameters.user = userParam
     }
     
     func reloadWidget() {
