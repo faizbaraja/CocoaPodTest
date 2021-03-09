@@ -13,6 +13,7 @@ class AnnounceKitService {
     private let widgetId: String
     private let selector: String = ".announcekit-widget"
     private var widgetParameters:WidgetParameter = WidgetParameter()
+    private var additionalData:[String:Any] = ["platform":"ios"]
     
     var delegate:AnnounceKitServiceProtocol?
     
@@ -37,11 +38,11 @@ class AnnounceKitService {
     }
     
     private func setBasicParam() {
-        let additionalData = WidgetParameter.Data(platform: "ios")
+//        let widgetData = WidgetParameter.Data(platform: "ios")
         
         widgetParameters.widget = "https://announcekit.app/widgets/v2/\(self.widgetId)"
         widgetParameters.selector = selector
-        widgetParameters.data = additionalData
+//        widgetParameters.data = widgetData
     }
     
     private func configure() {
@@ -65,6 +66,16 @@ class AnnounceKitService {
     }
     
     private func pushFunctionString() -> String {
+        if var widgetParamDictionary = widgetParameters.dictionary {
+            widgetParamDictionary["data"] = additionalData
+            if let jsonData = try? JSONSerialization.data(withJSONObject: widgetParamDictionary, options: [.prettyPrinted]) {
+                let jsonString = String(data: jsonData, encoding: .utf8)!
+                return """
+                        announcekit.push(\(jsonString));
+                    """
+            }
+        }
+
         let jsonData = try! JSONEncoder().encode(widgetParameters)
         let jsonString = String(data: jsonData, encoding: .utf8)!
         return """
@@ -74,14 +85,25 @@ class AnnounceKitService {
     
     func setLang(lang:String) {
         widgetParameters.lang = lang
+        
+        reloadWidget()
     }
     
     func setUser(id:String, email:String?, name:String?) {
         let userParam = WidgetParameter.User(id: id, name: name, email: email)
         widgetParameters.user = userParam
+        
+        reloadWidget()
     }
     
-    func reloadWidget() {
+    public func setAdditionalData(data:[String: Any]) {
+        for (_, dictData) in data.enumerated() {
+            additionalData[dictData.key] = dictData.value
+        }
+        reloadWidget()
+    }
+    
+    private func reloadWidget() {
         let script = pushFunctionString()
         webView.evaluateJavaScript(script) { (result, error) in
             if error != nil {
@@ -124,4 +146,11 @@ fileprivate class WhatsNewServiceMessenger: NSObject, WKScriptMessageHandler {
             print("error – unknow \(message.name)")
         }
     }
+}
+
+extension Encodable {
+  var dictionary: [String: Any]? {
+    guard let data = try? JSONEncoder().encode(self) else { return nil }
+    return (try? JSONSerialization.jsonObject(with: data, options: .allowFragments)).flatMap { $0 as? [String: Any] }
+  }
 }

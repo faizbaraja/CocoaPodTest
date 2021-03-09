@@ -11,6 +11,7 @@ public class AnnounceKit {
     public init(widgetId:String) {
         self.widgetId = widgetId
         self.service = AnnounceKitService(widgetId: self.widgetId)
+        self.service?.loadPage()
     }
     
     public func createWidget() -> UIViewController {
@@ -29,16 +30,16 @@ public class AnnounceKit {
         return unreadCount
     }
     
-    public func setLanguage(lang:String) {
+    public func setLanguage(lang: String) {
         self.service?.setLang(lang: lang)
     }
     
-    public func setUser(id:String, email:String?, name:String?) {
+    public func setUser(id: String, email: String?, name: String?) {
         self.service?.setUser(id:id, email:email, name:name)
     }
     
-    public func reloadWidget() {
-        self.service?.reloadWidget()
+    public func setAdditionalData(data:[String: Any]) {
+        self.service?.setAdditionalData(data: data)
     }
     
     deinit {
