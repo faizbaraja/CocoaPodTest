@@ -1,16 +1,12 @@
 import UIKit
 
-public protocol AnnounceKitProtocol {
-    func updateUnreadCount(unreadCount:Int)
-}
-
 public class AnnounceKit {
 
     var service: AnnounceKitService?
     
-    var delegate:AnnounceKitProtocol?
-    
     let widgetId:String
+    
+    private var unreadCount:Int = 0
     
     public init(widgetId:String) {
         self.widgetId = widgetId
@@ -29,10 +25,8 @@ public class AnnounceKit {
         return containerViewController
     }
     
-    public func getUnreadCount(delegate:AnnounceKitProtocol?){
-        self.delegate = delegate
-        self.service?.delegate = self
-        self.service?.loadPage()
+    public func getUnreadCount() -> Int {
+        return unreadCount
     }
     
     public func setLanguage(lang:String) {
@@ -54,8 +48,6 @@ public class AnnounceKit {
 
 extension AnnounceKit: AnnounceKitServiceProtocol {
     func updateUnreadCount(unreadCount: Int) {
-        if let delegate = delegate {
-            delegate.updateUnreadCount(unreadCount: unreadCount)
-        }
+        self.unreadCount = unreadCount
     }
 }

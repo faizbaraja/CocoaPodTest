@@ -69,21 +69,6 @@
                })
              });
 
-             announcekit.on("widget-open", function({ widget }) {
-               // Called when the specified widget is opened
-               console.log(`announcekit.on.widget-open`);
-             });
-
-             announcekit.on("widget-close", function({ widget }) {
-               // Called when the specified widget is closed
-               console.log(`announcekit.on.widget-close`);
-             });
-
-             announcekit.on("widget-resize", function({ widget, size }) {
-               // Called when the specified widget is resized
-               console.log(`announcekit.on.widget-resize`);
-             });
-
              announcekit.on("widget-unread", function({ widget, unread }) {
                // Called when unread post count of specified widget has been updated
                console.log(`announcekit.on.widget-unread`);
