@@ -1,5 +1,11 @@
 import UIKit
 
+public protocol AnnounceKitProtocol:class {
+    func widgetOpen(widget:[String:Any])
+    func widgetClose(widget:[String:Any])
+    func widgetState(uiState:[String:Any]?)
+}
+
 public class AnnounceKit {
 
     var service: AnnounceKitService?
@@ -7,11 +13,14 @@ public class AnnounceKit {
     let widgetId:String
     
     private var unreadCount:Int = 0
+    public weak var delegate: AnnounceKitProtocol?
     
-    public init(widgetId:String) {
+    public init(widgetId:String, delegate:AnnounceKitProtocol? = nil) {
         self.widgetId = widgetId
         self.service = AnnounceKitService(widgetId: self.widgetId)
+        self.service?.delegate = self
         self.service?.loadPage()
+        self.delegate = delegate
     }
     
     public func createWidget() -> UIViewController {
@@ -48,7 +57,19 @@ public class AnnounceKit {
 }
 
 extension AnnounceKit: AnnounceKitServiceProtocol {
+    func widgetState(uiState: [String : Any]?) {
+        delegate?.widgetState(uiState: uiState)
+    }
+    
     func updateUnreadCount(unreadCount: Int) {
         self.unreadCount = unreadCount
+    }
+    
+    func widgetOpen(widget:[String:Any]) {
+        delegate?.widgetOpen(widget: widget)
+    }
+    
+    func widgetClose(widget:[String:Any]) {
+        delegate?.widgetClose(widget: widget)
     }
 }

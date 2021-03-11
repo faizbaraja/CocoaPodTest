@@ -41,12 +41,21 @@
             return str;
           }
       
+      
          window.onload = (event) => {
              if (typeof start === "function") {
                  start();
              } else {
                  console.log("Warning – Widget is not loaded from the iOS app")
              }
+             
+             announcekit.on("widget-unread", function({ widget, unread }) {
+                // Called when unread post count of specified widget has been updated
+                console.log(`announcekit.on.widget-unread`);
+                if (window.webkit) {
+                    window.webkit.messageHandlers.updateUnreadCount.postMessage({unread:unread});
+                }
+              });
              
              announcekit.on("init", function() {
                // Called when the announcekit code loads. Before the widgets are loaded.
@@ -59,21 +68,48 @@
                console.log(`announcekit.on.widget-init`);
                
                
-               event.widget.watchState(function (unread) {
-                 console.log('read unread state', unread);
-                 if (window.webkit) {
-                     window.webkit.messageHandlers.updateUnreadCount.postMessage({unread:unread});
-                 }
-               }, function (state) {
-                 return state.ui.unreadCount || 0
-               })
+               event.widget.watchState(
+                   function (unread) {
+                     console.log('read unread state', unread);
+                     if (window.webkit) {
+                         window.webkit.messageHandlers.updateUnreadCount.postMessage({unread:unread});
+                     }
+                   },
+                   function (state) {
+                     console.log('read unread state', state.ui.unreadCount);
+                     return state.ui.unreadCount || 0
+                   })
              });
 
              announcekit.on("widget-unread", function({ widget, unread }) {
+                // Called when unread post count of specified widget has been updated
+                console.log(`announcekit.on.widget-unread`);
+                if (window.webkit) {
+                    window.webkit.messageHandlers.updateUnreadCount.postMessage({unread:'unread'});
+                }
+              });
+             
+             announcekit.on("widget-open", function({ widget }) {
                // Called when unread post count of specified widget has been updated
-               console.log(`announcekit.on.widget-unread`);
+               console.log(`announcekit.on.widget-open`);
                if (window.webkit) {
-                   window.webkit.messageHandlers.updateUnreadCount.postMessage({unread:unread});
+                   window.webkit.messageHandlers.widgetOpen.postMessage({data:widget});
+               }
+             });
+             
+             announcekit.on("widget-close", function({ widget }) {
+               // Called when unread post count of specified widget has been updated
+               console.log(`announcekit.on.widget-close`);
+               if (window.webkit) {
+                   window.webkit.messageHandlers.widgetClose.postMessage({data:widget});
+               }
+             });
+             
+             announcekit.on("widget-state", function({ posts, ui }) {
+               // Called when unread post count of specified widget has been updated
+               console.log(`announcekit.on.widget-state`);
+               if (window.webkit) {
+                   window.webkit.messageHandlers.widgetState.postMessage({ui:ui});
                }
              });
          
