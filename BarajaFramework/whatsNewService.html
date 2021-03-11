@@ -49,19 +49,6 @@
                  console.log("Warning – Widget is not loaded from the iOS app")
              }
              
-             announcekit.on("widget-unread", function({ widget, unread }) {
-                // Called when unread post count of specified widget has been updated
-                console.log(`announcekit.on.widget-unread`);
-                if (window.webkit) {
-                    window.webkit.messageHandlers.updateUnreadCount.postMessage({unread:unread});
-                }
-              });
-             
-             announcekit.on("init", function() {
-               // Called when the announcekit code loads. Before the widgets are loaded.
-               console.log(`announcekit.on.init`);
-             });
-
              announcekit.on("widget-init", function(event) {
                // Called for each widget after the widget has been successfully loaded.
                // Widget  object is passed to the handler.
